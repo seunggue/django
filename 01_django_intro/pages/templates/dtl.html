@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block body %}
+    <h3>반복문</h3>
+    {% for menu in menus %}
+        <li>{{menu}}</li>
+    {% endfor %}
+
+    {% for menu in menus %}
+        <p>{{forloop.counter}} : {{menu}}</p>
+    {% endfor %}
+
+    {% for e in empty %}
+        <p>{{e}}</p>
+    {% empty %}
+        <p>리스트가 비어있습니다.</p>
+    {% endfor %}
+    
+    <h3>조건문</h3>
+    {% if '한식' in menus %}
+        <p>연식 한국인 이라면??? 신라면</p>    
+    {% endif %}
+
+    {% for menu in menus %}
+        <p>{{forloop.counter}}번째 반복문 도는중~~~</p>
+        {% if '한식' == menu %}
+            <p>역시 한국인인 한식</p> 
+        {% elif '일식' == menu %}
+            <p>불매가즈아</p>
+        {% else %}   
+            <p>{{menu}}</p>
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}
+
+
+
