@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block body %}
+    <h1>여기는 게시물 목록</h1>
+    {% for post in posts %}
+        <p>{{post.title}}:{{post.content}}</p>
+    {% endfor %}
+
+
+{% endblock %}

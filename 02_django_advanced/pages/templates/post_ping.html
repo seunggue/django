@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block body %}
+    <h1>post_ping진입</h1>
+    <form action="/post-pong/" method="POST">
+        {% csrf_token %}
+        <input type="text" name="username"> 
+        <input type="text" name="password"> 
+        <input type="submit" value="login">
+    </form>
+{% endblock %}
