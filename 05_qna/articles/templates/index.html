@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block body %}
+{% for question in questions %}
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{question.title}}
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">{{question.content}}</a>
+        <a class="dropdown-item" href="#">{{question.user}}</a>
+        <form action="/questions/{{question.id}}/answer/create/ ">
+            <input type="text" name="content">
+            <input type="submit">
+        </form>
+        <div class="dropdown mt-2">
+            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                댓글보기
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {% for answer in question.answer_set.all %}
+                    <a class="dropdown-item" href="#">{{answer.content}}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="dropdown mt-2">
+            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                댓글보기
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {% for answer in question.answer_set.all %}
+                    <a class="dropdown-item" href="#">{{answer.content}}</a>
+                {% endfor %}
+            </div>
+        </div>
+</div>
+
+    <hr>
+{% endfor %} 
+{% endblock %}
