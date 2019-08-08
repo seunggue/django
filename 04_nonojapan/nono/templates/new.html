@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block body %}
+<form class="m-5" action="/nono/create">
+    <div class="form-group">
+        <label for="exampleInputEmail1">일본상품명</label>
+        <input type="type" class="form-control" id="exampleInputEmail1" name="product" placeholder="일본상품명 입력">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">대체상품</label>
+        <input type="type" class="form-control" id="exampleInputPassword1" name="replace" placeholder="대체상품명 입력">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">이미지주소등록</label>
+        <input type="type" class="form-control" id="exampleInputPassword1" name="img_url" placeholder="이미지주소복붙 등록">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">카테고리</label>
+        <input type="type" class="form-control" id="exampleInputPassword1" name="category" placeholder="이미지주소복붙 등록">
+    </div>
+    <button type="submit" class="btn btn-primary">등록</button>
+</form>
+
+{% endblock %}

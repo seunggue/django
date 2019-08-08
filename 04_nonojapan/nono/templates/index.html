@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block body %}
+
+{% for nono in nonos %}
+    <div class="card d-inline-block col-3">
+        <img src="{{nono.img_url}}" class="card-img-top" alt="..." style="width: 245px; height: 160px">
+        <div class="card-body">
+            <h5 class="card-title">{{nono.product}}</h5>
+            <p class="card-text">{{nono.replace}}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+{% endfor %}
+{% endblock %}
