@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
 {% block body %}
-  <h1>이덱스 페이지이빈다</h1>
+  {% for todo in todos %}
+    <h5>{{todo.due_date}}:{{todo.title}}</h5>
+    <a href="/todos/{{todo.id}}/delete">삭제</a>
+    <a href="/todos/{{todo.id}}/edit">수정</a>
+    <a href="/todos/{{todo.id}}/detail">상세보기</a>
+  {% endfor %}
 {% endblock %}

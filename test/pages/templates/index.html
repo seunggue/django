@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block body %}
+{% for cre in cres %}
+  <div>
+    <h5>{{cre.name}}</h5>
+    <h5>{{cre.age}}</h5>
+  </div>
+{% endfor %}
+{% endblock %}
