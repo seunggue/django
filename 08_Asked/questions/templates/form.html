@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block body %}
+  <div class="container w-50 my-3">
+    <form action="" method="POST">
+      {% csrf_token %}
+      <!-- 토큰을 써야지 누가 발행했는지 알 수 있음 -->
+      <textarea class="form-control" name="content" id="" rows="5" placeholder="질문을 남겨주세요"></textarea>
+      <input class="btn btn-danger my-3" type="submit">
+    </form>
+  </div>
+{% endblock %}
