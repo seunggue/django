@@ -1,8 +1,0 @@
-{% extends 'base.html' %}
-{% block body %}
-  <form action="/todos/{{todo.id}}/update">
-    <input type="text" name="title" value="{{todo.title}}">
-    <input type="date" name="duedate" value="{{todo.due_date|date:'Y-m-d'}}">
-    <input type="submit">
-  </form>
-{% endblock %}

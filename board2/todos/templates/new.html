@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block body %}
+  <form action="/todos/create">
+    <input type="text" name="title">
+    <input type="text" name="content">
+    <input type="date" name="due-date">
+    <input type="submit">
+  </form>
+{% endblock %}
