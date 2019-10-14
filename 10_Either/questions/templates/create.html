@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1 class="text-center">질문을 등록해 주세요</h1>
+<div style="background-image: url('/static/create.png'); width: 100%; height: 410px; background-size: cover; background-position: center;">
+  <form action="" method="POST" style="width: 100%; height: 100%">
+    {% csrf_token %}
+    <input class="rounded-pill border-danger text-center" style="position: relative; top:41%; left:11%; height:45px;" type="text" name="pick_1" placeholder="답변1">
+    <input class="rounded-pill border-danger text-center" style="position: relative; top:41%; left:60%; height:45px;" type="text"  name="pick_2" placeholder="답변2">
+    <span class="" style="position:relative; left:9%; top:103%">
+      <input class="btn btn-primary col-2" type="submit" value="등록">
+    </span>
+  </form>
+</div>
+{% endblock %}
