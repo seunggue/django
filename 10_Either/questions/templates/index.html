@@ -15,6 +15,7 @@
         <li data-target="#carouselExampleCaptions" data-slide-to="{{ forloop.counter }}" class="active"></li>
       {% endfor %}
     </ol>
+    
     <div class="carousel-inner">      
       <img src="{% static 'create.png' %}" class="d-block w-100" alt="...">
       {% for question in questions %}

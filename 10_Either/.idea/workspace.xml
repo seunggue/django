@@ -13,6 +13,9 @@
   </component>
   <component name="ProjectId" id="1SAq4VRYrPxHuRgsHsq13ab7OZW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$USER_HOME$/algorithm" />
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -43,7 +46,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
