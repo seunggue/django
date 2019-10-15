@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>detail</h1>
+<h3>{{movie.title}}</h3>
+<h3>{{movie.open_date}}</h3>
+{% comment %}
+<a href="{% url 'movies:delete' movie.id %}">삭제</a>
+{% endcomment %}
+<form action="{% url 'movies:delete' movie.id %}" method="POST">
+  {% csrf_token %}
+  <input type="submit" value="삭제">
+</form>
+<a href="{% url 'movies:update' movie.id %}">수정</a>
+<a href="{% url 'movies:update_model_form' movie.id %}">수정(폼)</a>
+
+
+<h1>댓글</h1>
+<form action="{% url 'movies:comment_create' movie.id %}" method="POST">
+  {% csrf_token %}  
+  {{comment_form.as_p}}
+  <input type="submit">
+</form>
+{% for comment in movie.comment_set.all %}
+  <p>{{comment.content}}</p>
+{% endfor %}
+{% endblock %}
