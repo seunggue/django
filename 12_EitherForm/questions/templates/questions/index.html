@@ -1,4 +1,14 @@
 {% extends 'questions/base.html' %}
 {% block body %}
   <h1>index</h1>
+  {% for question in questions %}
+  <div class="card">
+      <h5 class="card-header">{{question.title}}</h5>
+      <div class="card-body">
+        <p class="card-title">{{question.choice_1}}</p>
+        <p class="card-text">{{question.choice_2}}</p>
+        <a href="{% url 'questions:detail' question.id %}" class="btn btn-primary">투표하러가기</a>
+      </div>
+    </div>
+  {% endfor %}
 {% endblock %}
