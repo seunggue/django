@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import QuestionForm, ChoiceForm
 from .models import Questions, Choice
 from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
@@ -9,6 +10,7 @@ def index(request):
 
     return render(request, 'questions/index.html', {'questions':questions})
 
+@login_required
 def create(request):
     # 1.사용자가 데이터를 입력하기 위해서 GET요청(폼을 요청)
     # 6.사용자가 데이터를 입력하고 POST요청
@@ -43,6 +45,7 @@ def create(request):
     # 11.form.html보여주기
     return render(request, 'questions/form.html', context)
     # return render(request, 'questions/form.html', {'form':form})
+
 
 def detail(request, id):
     question = get_object_or_404(Questions, id=id)
