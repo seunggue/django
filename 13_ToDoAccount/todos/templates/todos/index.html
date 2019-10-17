@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 {% block body %}
 <h1>인덱스</h1>
-<h3>{{visit_num}}</h3>
+  {% for todo in todos %}
+    <div class="alert alert-primary d-flex justify-content-between" role='alert'>
+      <span>{{todo.due_date}}:{{todo.content}}</span>
+      <a href="{% url 'todos:delete' todo.id %}" class="btn btn-danger">완료</a>
+    </div>
+  {% endfor %}
 {% endblock %}
