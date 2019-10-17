@@ -31,6 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts',
+    'bootstrap4',
+    'todos',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -54,7 +57,8 @@ ROOT_URLCONF = 'wunderlist.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'wunderlist', 'templates')],
+        # 가장 기본이 되는 tmplates의 위치를 찾을 때
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
