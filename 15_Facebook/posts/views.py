@@ -1,9 +1,14 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import PostForm
+from .models import Post
 
 # Create your views here.
 def index(request):
-    return render(request, 'posts/index.html')
+    posts = Post.objects.all()
+    context = {
+        'posts':posts
+    }
+    return render(request, 'posts/index.html', context)
 
 def create(request):
     if request.method == 'POST':
@@ -20,3 +25,15 @@ def create(request):
         'forms':forms
     }
     return render(request, 'posts/form.html', context)
+
+def like(request, id):
+    post = get_object_or_404(Post, id=id)
+    user = request.user
+
+    if user in post.like_users.all():
+        post.like_users.remove(user)
+    else:
+        post.like_users.add(user)
+
+
+    return redirect('posts:index')
