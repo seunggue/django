@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap_pagination %}
+{% block body %}
+
+  {% for post in posts %}
+    {% include 'posts/_post.html' %}
+  {% endfor %}
+
+  {% for contact in contacts %}
+    {# Each "contact" is a Contact model object. #}
+    {{ contact.full_name|upper }}<br>
+{% endfor %}
+  {% bootstrap_paginate posts %}
+{% endblock %}

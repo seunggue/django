@@ -1,0 +1,30 @@
+{% load make_link %}
+{% load static %}
+  <div class="card col-7 d-inline-block mb-3" style="padding: 3px 0px;">
+    <div style="padding-top:6px;">
+      <p style="padding-left:6px;">  
+        <span><a href="{% url 'accounts:user_page' post.user.id %}" style="color:black;">😄{{post.user}}</a></span>
+      </p>
+    </div>
+    <img src="{{post.image.url}}" class="card-img-top" alt="...">
+    <div class="card-body pt-2">
+      <div>
+        {% if user in post.likes_users.all %}
+          <a href="{% url 'posts:like' post.id %}"><img src="{% static 'like2.png' %}" alt=""></a>
+        {% else %}
+          <a href="{% url 'posts:like' post.id %}"><img src="{% static '/like.png' %}" alt=""></a>
+        {% endif %}
+        <a href=""><img src="{% static '/detail.png' %}" alt=""></a>
+        <a href=""><img src="{% static '/datail2.png' %}" alt=""></a>
+        <a href="" style="float:right;"><img src="{% static '/datail3.png' %}" alt=""></a>
+      </div>
+      <p>좋아요{{post.likes_users.all.count}}개</p>
+      <p class="card-text">{{post | hashtag_link | safe}}</p>
+    </div>
+        <div style="border-top:1px solid#EFEFEF;">
+          <form action="">
+            <input type="text" name='comment_content' placeholder="댓글달기..." style="border:none; padding:6px 3px; margin:10px 0 10px 15px; width:85%;">
+            <input type="submit" value="게시" style="background-color:white; border:none; float:right; margin:12px 10px 10px 0;">
+          </form>
+        </div>
+  </div>

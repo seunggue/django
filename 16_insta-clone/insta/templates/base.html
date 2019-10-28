@@ -1,0 +1,45 @@
+{% load bootstrap4 %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  {% bootstrap_css %}
+  <script src="https://kit.fontawesome.com/dea07b509b.js" crossorigin="anonymous"></script>
+</head>
+<body style="font-weight: 600;">
+
+  <nav class="navbar navbar-light bg-white" style="padding:0px 450px; border-bottom: 1px solid #bcbcbc; height:70px;">
+
+    <a class="navbar-brand" href="{% url 'posts:index' %}">
+      <img src="{% static '/insta.png' %}" alt="">
+    </a>
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <span>
+      <img src="{% static '/cp.png' %}" alt="">
+      <img src="{% static '/heart.png' %}" alt="">
+      {% if user.is_authenticated %}
+        <a href="{% url 'posts:create' %}"><i class="fas fa-pen"></i></a>
+        <a href="{% url 'accounts:user_page' user.id %}"><img src="{% static '/my.png' %}" alt=""></a>
+        <a href="{% url 'accounts:logout' %}"><img src="{% static '/out.png' %}" alt=""></a>
+      {% else %}
+      <a href="{% url 'accounts:login' %}" style=""><i class="fas fa-user-lock"></i></a>
+      <a href="{% url 'accounts:signup' %}" style=""><i class="fas fa-key"></i></a>
+      {% endif %}
+    </span>
+  
+  </nav>
+  <div class="pt-5" style="background-color: #FAFAFA; padding:0px 470px;">
+    {% block body %}
+    {% endblock %}
+  </div>
+
+  {% bootstrap_javascript jquery='full' %}
+</body> 
+</html>
