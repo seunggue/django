@@ -1,0 +1,45 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  {% bootstrap_css %}
+</head>
+<body>
+  <ul class="nav" style="background-color: #FFCB06;">
+    <li class="nav-item">
+      <a class="nav-link active" href="{% url 'monster:index' %}">
+        <img src="/media/home.png" alt="">
+      </a>
+    </li>
+  
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'monster:create' %}" style='color:black; margin-top:15px;'>
+       포켓몬등록</a>
+    </li>
+    {% if user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="#" style='color:black; margin-top:15px;'>{{user.username}}</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="{% url 'accounts:logout' %}" style='color:black; margin-top:15px;'>로그아웃</a>
+      </li>
+    {% else %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'accounts:signup' %}" style='color:black; margin-top:15px;'>회원가입</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'accounts:login' %}" style='color:black; margin-top:15px;'>로그인</a>
+    </li>
+    {% endif %}
+  </ul>
+  <div class="container pt-5">
+    {% block body %}
+    {% endblock %}
+  </div>
+  {% bootstrap_javascript jquery='full' %}
+</body>
+</html>

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block body %}
+  <div class="jumbotron">
+    <h1 class="display-4">로그인후 이용해주세요</h1>
+    <a href="{% url 'accounts:login' %}" class="btn btn-info">로그인</a>
+    <a href="{% url 'accounts:signup' %}" class="btn btn-secondary">회원가입</a>
+
+  </div>
+
+{% endblock %}

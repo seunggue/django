@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="card mb-3" style="max-width: 100%;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="{{monster.monster_image.url}}" class="card-img" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+
+          <h5 class="card-title">{{monster.content_title}}
+            {% if user in monster.like_users.all %}
+              <a href="{% url 'monster:like' monster.id %}">😊</a>{{like_count}}
+            {% else %}
+              <a href="{% url 'monster:like' monster.id %}">😐</a>{{like_count}}
+            {% endif %}
+          </h5> 
+
+          <p class="card-text">{{monster.monster_detail}}</p>
+          <p class="card-text"><small class="text-muted">{{monster.monster_size}}</small></p>
+          {% if monster.user == user %}
+            <a href="{% url 'monster:update' monster.id %}" class="btn btn-warning">수정</a>
+            <a href="{% url 'monster:delete' monster.id %}" class="btn btn-danger">삭제</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">작성자</th>
+          <th scope="col">내용</th>
+          <th scope="col">작성시간</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for comment in monster.comment_set.all %}
+        <tr>
+          <th scope="row"></th>
+          
+          <td>{{comment.user}}</td>
+          <td>{{comment.content}}</td>
+          <td class="d-flex justify-content-between">{{comment.create_date}}
+            {% if comment.user == user %}
+            <a href="{% url 'monster:comment_delete' monster.id comment.id %}" class="btn btn-warning">댓글삭제</a>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <form action="{% url 'monster:comment_create' monster.id %}" method="POST">
+        {% csrf_token %}
+        {{comment_form}}
+        <input type="submit" class="btn btn-primary" value="댓글등록">
+      </form>
+{% endblock %}
