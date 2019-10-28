@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Artist(models.Model):
     name = models.TextField()
@@ -19,3 +20,6 @@ class Comment(models.Model):
     content = models.TextField()
     def __str__(self):
         return self.content
+
+class Person(models.Model):
+    last_name = models.CharField()
